@@ -1,5 +1,7 @@
 package Istituzione;
 
+import java.util.ArrayList;
+
 public abstract class Dipendente extends Personale{
 	
 	private int codFiscale;
@@ -11,18 +13,64 @@ public abstract class Dipendente extends Personale{
 		this.codFiscale = codFiscale; 
 	}
 	
+	
 	public double getPaga() { return retribuzioneBase; }
+	
 	
 	public String toString() 
 	{
-		return "DIPENDENTE ->  "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono();
+		return "DIPENDENTE ->  "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA BASE: " + this.getPaga();
 	}
+	
 	
 	public boolean equals(Object o) 
 	{
 		if(o instanceof Dipendente) return true;
 		return false;
 	}
+	
+	
+	public double getRetribuzioneBase() { return retribuzioneBase; }
+	
+	
+	public boolean contains(Object o , ArrayList<Personale>p) 
+	{
+		Dipendente v;
+		if(equals(o)) 
+		{
+		   v = (Dipendente)o;
+		   
+		   for(Personale personale : p) 
+		      {
+			     if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+			    	 return true;
+		      }
+		}
+		return false;
+	}
+	
+	
+	public int getIndice(Object o , ArrayList<Personale>p) 
+	{
+		Dipendente v;
+		if(equals(o)) 
+		{
+			v = (Dipendente)o;
+			
+			int i=0;
+		    for(Personale personale : p) 
+			   {
+				  if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+				     return i;
+				  i++;
+			   }
+			
+			
+		}
+		return -1; 
+	}
+	
+	
 	
 	
 

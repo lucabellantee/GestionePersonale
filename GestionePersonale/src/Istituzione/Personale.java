@@ -1,5 +1,7 @@
 package Istituzione;
 
+import java.util.ArrayList;
+
 public abstract class Personale {
 // nome indirizzo numero di telefono 
 	
@@ -28,6 +30,10 @@ public abstract class Personale {
 	public abstract double getPaga();
 	
 	public abstract boolean equals(Object o); 
+	
+	public abstract boolean contains(Object o , ArrayList<Personale>p);
+	
+	public abstract int getIndice(Object o , ArrayList<Personale>p);
 	
 	
 }
