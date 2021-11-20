@@ -11,6 +11,7 @@ public class Gestione {
 		int scelta;
 		boolean uscita=true;
 		Scanner input = new Scanner(System.in);
+		Scanner input2 = new Scanner(System.in);
 		Staff s = null;
 		
 		do {
@@ -86,14 +87,16 @@ public class Gestione {
 		    	
 		    	break;
 		    	
-		    case 3:
+		    case 3: //TODO: vedere se effettivamente è un membro
 		    	
 		    	System.out.println("Di chi vuoi avere le info? ");
 		    	
 		    	
 		    	break;
 		    	
-		    case 4:
+		    case 4: //TODO: vedere se effettivamente è un membro
+		    	
+		    	System.out.println("Di chi vuoi sapere la paga? ");
 		    	
 		    	break;
 
@@ -112,11 +115,11 @@ public class Gestione {
 		    	
 		    	System.out.println("Il membro da inserire è un volonatario o un dipendente? (v/d) " );
 		    	String VD = input.next();
-		    	if (VD == "v") {
+		    	if (VD.equals("v")) {
 		    		System.out.println("Inserire in nome del volontario da aggiungere: ");
-			    	nomeVolontario=input.nextLine();
+			    	nomeVolontario=input2.nextLine();
 			    	System.out.println("Inserire l'indirizzo: ");
-			    	indirizzoVolontario=input.nextLine();
+			    	indirizzoVolontario=input2.nextLine();
 			    	System.out.println("Inserire il numero di telefono: ");
 			    	numeroVolontario=input.nextInt();		    	
 			    	Personale pe= new Volontario (nomeVolontario,indirizzoVolontario,numeroVolontario);
@@ -127,16 +130,16 @@ public class Gestione {
 		    	
 		    	String GI = input.next();
 		    	
-		    	if(GI == "g") {
+		    	if(GI.equals("g")) {
 		    		
 		    		System.out.println("Inserire in nome del dipendente da aggiungere: ");
-			    	nomeDipendente=input.nextLine();
+			    	nomeDipendente=input2.nextLine();
 			    	System.out.println("Inserire l'indirizzo: ");
-			    	indirizzoDipendente=input.nextLine();
+			    	indirizzoDipendente=input2.nextLine();
 			    	System.out.println("Inserire il numero di telefono: ");
 			    	numeroDipendente=input.nextInt();
 			    	System.out.println("Inserire il codice fiscale: ");
-			    	codiceFiscale=input.nextInt();
+			    	codiceFiscale=input2.nextInt();
 			    	System.out.println("Quante giornate lavorative ha fatto? ");
 			    	int giorniLavoro=input.nextInt();
 			    	Personale pe= new Giornaliero(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, giorniLavoro);
@@ -147,13 +150,13 @@ public class Gestione {
 		        else {
 		        	
 		        	System.out.println("Inserire in nome del dipendente da aggiungere: ");
-			    	nomeDipendente=input.nextLine();
+			    	nomeDipendente=input2.nextLine();
 			    	System.out.println("Inserire l'indirizzo: ");
-			    	indirizzoDipendente=input.nextLine();
+			    	indirizzoDipendente=input2.nextLine();
 			    	System.out.println("Inserire il numero di telefono: ");
 			    	numeroDipendente=input.nextInt();
 			    	System.out.println("Inserire il codice fiscale: ");
-			    	codiceFiscale=input.nextInt();
+			    	codiceFiscale=input2.nextInt();
 			    	System.out.println("Quanti bonus ha maturato? (senza euro) ");
 			    	int bonusMaturati=input.nextInt();
 			    	Personale pe= new Impiegato(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, bonusMaturati);
@@ -176,9 +179,13 @@ public class Gestione {
 		    	
 		    	break;
 		    	
-		    case 9:
+		    case 9: //non va
 		    	
 		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
+		    	   
+		    	   ArrayList<String> lista = s.elencoPersonale();
+		    	   
+		    	   for(String t : lista) System.out.println(t);
 		    	
 		    	break;
 		    	
