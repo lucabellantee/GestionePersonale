@@ -3,6 +3,11 @@ package Main;
 import Istituzione.*;
 import java.util.*;
 
+//BISOGNA FAR IN MODO CHE QUANDO SI STAMPANO LE INFO DI UN
+//MEMBRO SINGOLO, ESCA LA PAGA = A 0 PER I VOLOTARI E PER
+// I DIPENDENTI, OLTRE ALLA PAGA, SE UNO è GIORNALIERO
+// I GIORNI LAVORATIVI E SE UNO è IMPIEGATO I BONUS
+// PER DIFFERENZIARE COSI LA STAMPA PUNTO 5 (PIU SCARNA) RISPETTO QUELLA DEL PUNTO 4
 
 public class Gestione {
 
@@ -16,7 +21,6 @@ public class Gestione {
 		Personale p= null;
 		do {
 	
-	// Rivisitazione menu ! 
 			System.out.println("      MENU      ");
 			System.out.println("Che cosa vuoi fare? ");
 			System.out.println("0) Per creare un gruppo/staff: ");
@@ -114,7 +118,7 @@ public class Gestione {
 		    	System.out.println("Chi vuoi rimuovere? ");
 		    	String nomeDaRimuovere = input.nextLine();
 		    	
-		    	if(s.removePersonale(nomeDaRimuovere)) //RISOLVERE, DA SEMPRE FALSE
+		    	if(s.removePersonale(nomeDaRimuovere)) 
 		    	{ 		    		
 		    	 System.out.println( nomeDaRimuovere + " è stato rimosso dallo staff ");		    		
 		    	}
@@ -132,9 +136,11 @@ public class Gestione {
 		    	System.out.println("Di chi vuoi avere le info? ");
 		    	String nomeInfo = input.nextLine();
 		    	
-		    	if(s.findPersona(nomeInfo)) //RISOLVERE, DA SEMPRE FALSE
+		    	if(s.findPersona(nomeInfo))
 		    	{
-		    		s.elencoPersonale().get(s.getIndice(nomeInfo));
+		    		System.out.println(s.elencoPersonale().get(s.getIndice(nomeInfo)).toString());
+		    				    	  
+		    		
 		    	} 
 		    	else { System.out.println( nomeInfo + " non è presente nello staff"); }
 		    	
