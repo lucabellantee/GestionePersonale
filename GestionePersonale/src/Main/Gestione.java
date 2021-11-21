@@ -13,7 +13,7 @@ public class Gestione {
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
 		Staff s = null;
-		
+		Personale p= null;
 		do {
 	
 	// Rivisitazione menu ! 
@@ -21,8 +21,8 @@ public class Gestione {
 			System.out.println("Che cosa vuoi fare? ");
 			System.out.println("0) Per creare un gruppo/staff: ");
 			System.out.println("1) Aggiungere un dipendente: ");
-			System.out.println("2) Aggiungere un volontario: ");
-			System.out.println("3) Avere le info di un membro: ");
+			System.out.println("2) Aggiungere un volontario: "); 
+			System.out.println("3) Avere le info di un membro: "); // s.elencoPersonale().get(s.getIndice(nomeDaVisualizzare));
 			System.out.println("4) Calcolare la paga di un membro: ");
 			System.out.println("5) Elencare i membri di un gruppo di staff: ");
 			System.out.println("6) Uscire dal programma. ");
@@ -31,19 +31,31 @@ public class Gestione {
 		    input.nextLine();
 
 		    switch(scelta) {
+		    
+            case 0:
+		    	
+		    	System.out.println("Inserire il nome del gruppo staff: ");
+		    	String nomeStaff=input.next();
+		    	s= new Staff(nomeStaff);
+		    	
+		    	break;
 		        
 		    case 1:
 		    	
 		    	String nomeDipendente, indirizzoDipendente;
-		    	int numeroDipendente, codiceFiscale;
+		    	int numeroDipendente;
+		    	String codiceFiscale;
 		    	System.out.println("Inserire in nome del dipendente da aggiungere: ");
 		    	nomeDipendente=input.nextLine();
+		    	
+		    	if(s.findPersona(nomeDipendente)) break;
+		    	
 		    	System.out.println("Inserire l'indirizzo: ");
 		    	indirizzoDipendente=input.nextLine();
 		    	System.out.println("Inserire il numero di telefono: ");
 		    	numeroDipendente=input.nextInt();
 		    	System.out.println("Inserire il codice fiscale: ");
-		    	codiceFiscale=input.nextInt();
+		    	codiceFiscale=input2.nextLine();
 		    	
 		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
 		    	String Opzione=input.next();
@@ -54,8 +66,9 @@ public class Gestione {
 		    	 System.out.println("Quante giornate lavorative ha fatto? ");
 		    	 giorniLavoro=input.nextInt();
 		    	 
-		    	 Personale p= new Giornaliero(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, giorniLavoro);
-		    		
+		    	 p= new Giornaliero(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, giorniLavoro);
+		    	 s.addPersonale(p);
+		    	 
 		    	}
 		    	else
 		    	{
@@ -64,8 +77,8 @@ public class Gestione {
 		    	 System.out.println("Quanti bonus ha maturato? (senza euro) ");
 		    	 bonusMaturati=input.nextInt();
 		    	 
-		    	 Personale p= new Impiegato(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, bonusMaturati);
-		    		
+		    	 p= new Impiegato(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, bonusMaturati);
+		    	 s.addPersonale(p);	
 		    	}
 		    		    	
 		    	
@@ -77,117 +90,52 @@ public class Gestione {
 		    	int numeroVolontario;
 		    	System.out.println("Inserire in nome del volontario da aggiungere: ");
 		    	nomeVolontario=input.nextLine();
+		    	
+		    	if(s.findPersona(nomeVolontario)) break;
+		    	
 		    	System.out.println("Inserire l'indirizzo: ");
 		    	indirizzoVolontario=input.nextLine();
 		    	System.out.println("Inserire il numero di telefono: ");
 		    	numeroVolontario=input.nextInt();		    	
-		    	Personale p= new Volontario (nomeVolontario,indirizzoVolontario,numeroVolontario);
+		    	p = new Volontario (nomeVolontario,indirizzoVolontario,numeroVolontario);
+		    	s.addPersonale(p);
 		    	
 		    	break;
 		    	
-		    case 3: //TODO: vedere se effettivamente è un membro
+		    case 3:
 		    	
 		    	System.out.println("Di chi vuoi avere le info? ");
 		    	
 		    	
 		    	break;
 		    	
-		    case 4: //TODO: vedere se effettivamente è un membro
+		    case 4:
 		    	
 		    	System.out.println("Di chi vuoi sapere la paga? ");
 		    	
 		    	break;
 
+ 		    	
+		    case 5: //non va
 		    	
-		    case 5:
-		    	
-		    	System.out.println("Inserire il nome del gruppo staff: ");
-		    	String nomeStaff=input.next();
-		    	s= new Staff(nomeStaff);
-		    	
-		    	break;
-		    	
-		    case 6: //TODO: controllo dell'esistenza del membro
-		    	
-		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
-		    	
-		    	System.out.println("Il membro da inserire è un volonatario o un dipendente? (v/d) " );
-		    	String VD = input.next();
-		    	if (VD.equals("v")) {
-		    		System.out.println("Inserire in nome del volontario da aggiungere: ");
-			    	nomeVolontario=input2.nextLine();
-			    	System.out.println("Inserire l'indirizzo: ");
-			    	indirizzoVolontario=input2.nextLine();
-			    	System.out.println("Inserire il numero di telefono: ");
-			    	numeroVolontario=input.nextInt();		    	
-			    	Personale pe= new Volontario (nomeVolontario,indirizzoVolontario,numeroVolontario);
-			    	
-			    	s.addPersonale(pe);		    			    		
-		    	}
-		    	else { System.out.println("Il dipendente è giornaliero o impiegato? (g/i) ");
-		    	
-		    	String GI = input.next();
-		    	
-		    	if(GI.equals("g")) {
-		    		
-		    		System.out.println("Inserire in nome del dipendente da aggiungere: ");
-			    	nomeDipendente=input2.nextLine();
-			    	System.out.println("Inserire l'indirizzo: ");
-			    	indirizzoDipendente=input2.nextLine();
-			    	System.out.println("Inserire il numero di telefono: ");
-			    	numeroDipendente=input.nextInt();
-			    	System.out.println("Inserire il codice fiscale: ");
-			    	codiceFiscale=input2.nextInt();
-			    	System.out.println("Quante giornate lavorative ha fatto? ");
-			    	int giorniLavoro=input.nextInt();
-			    	Personale pe= new Giornaliero(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, giorniLavoro);
-			    	
-			    	s.addPersonale(pe);
-		    		
-		    	}
-		        else {
-		        	
-		        	System.out.println("Inserire in nome del dipendente da aggiungere: ");
-			    	nomeDipendente=input2.nextLine();
-			    	System.out.println("Inserire l'indirizzo: ");
-			    	indirizzoDipendente=input2.nextLine();
-			    	System.out.println("Inserire il numero di telefono: ");
-			    	numeroDipendente=input.nextInt();
-			    	System.out.println("Inserire il codice fiscale: ");
-			    	codiceFiscale=input2.nextInt();
-			    	System.out.println("Quanti bonus ha maturato? (senza euro) ");
-			    	int bonusMaturati=input.nextInt();
-			    	Personale pe= new Impiegato(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, bonusMaturati);
-			    	
-		        	s.addPersonale(pe);		        	
-		        }
-		    	}
-		    			    	
-		    	break;
-		    	
-		    case 7:
-		    	
-		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
-		    	
-		    	break;
-		    	
-		    case 8:
-		    	
-		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
-		    	
-		    	break;
-		    	
-		    case 9: //non va
-		    	
-		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
-		    	   
-		    	   ArrayList<String> lista = s.elencoPersonale();
-		    	   
+		    	if( s == null) {	
+		    		System.out.println("Non c'è nessun gruppo/staff!");
+		    		break;	    	   		    	   
+		    	}		    	
+		    	else
+		    	{
+		    	//System.out.println("lol");
+		    	if(!s.isEmpty()) {
+		    	   ArrayList<String> lista = new ArrayList();
+		    	   lista = s.elencoPersonale();		    	   
 		    	   for(String t : lista) System.out.println(t);
-		    	
+		    	   break;
+		    	   }
+		    	else {System.out.println("La lista è vuota!"); }
 		    	break;
+		    	}
 		    	
-		    case 10:
+		    case 6:
 		    	uscita=false;
 		    	break;
 		    	

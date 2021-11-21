@@ -6,7 +6,7 @@ public class Impiegato extends Dipendente {
 	
 	private int bonusMaturati;
 	
-	public Impiegato(String nome, String indirizzo, int numeroTelefono, int codFiscale, int bonusMaturati) 
+	public Impiegato(String nome, String indirizzo, int numeroTelefono, String codFiscale, int bonusMaturati) 
 	{
 		super(nome,indirizzo,numeroTelefono,codFiscale);
 		this.bonusMaturati = bonusMaturati;

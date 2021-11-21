@@ -6,7 +6,7 @@ public class Giornaliero extends Dipendente {
 
 	private int giorniLavoro;
 	
-	public Giornaliero(String nome, String indirizzo, int numeroTelefono, int codFiscale, int giorniLavoro) 
+	public Giornaliero(String nome, String indirizzo, int numeroTelefono, String codFiscale, int giorniLavoro) 
 	{
 		super(nome,indirizzo,numeroTelefono,codFiscale);
 		this.giorniLavoro = giorniLavoro; 

@@ -88,7 +88,7 @@ public class Staff {
 //  Ritorna false se lo staff è vuoto	
 	public boolean isEmpty() 
 	{
-		if(this.p.size() == 0) return true;
+		if(this.p.isEmpty()) return true;
 		   return false; 
 	}
 	
