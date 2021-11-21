@@ -31,7 +31,7 @@ public class Impiegato extends Dipendente {
 	
 	public int getBonusMaturati() { return this.bonusMaturati; }
 	
-	
+/*	
 	public boolean contains(Object o , ArrayList<Personale>p) 
 	{
 		Impiegato v;
@@ -41,12 +41,14 @@ public class Impiegato extends Dipendente {
 		   
 		   for(Personale personale : p) 
 		      {
-			     if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+			     if(v.getNome().equals(personale.getNome()))
 			    	 return true;
 		      }
 		}
 		return false;
 	}
+	
+*/
 	
 	
 	public int getIndice(Object o , ArrayList<Personale>p) 
@@ -59,7 +61,7 @@ public class Impiegato extends Dipendente {
 			int i=0;
 		    for(Personale personale : p) 
 			   {
-				  if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+				  if(v.getNome().equals(personale.getNome()))
 				     return i;
 				  i++;
 			   }

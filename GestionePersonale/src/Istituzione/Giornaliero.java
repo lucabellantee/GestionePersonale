@@ -31,7 +31,7 @@ public class Giornaliero extends Dipendente {
 	
 	public int getGiorniLavoro() { return this.giorniLavoro; }
 	
-	
+/*	
 	public boolean contains(Object o , ArrayList<Personale>p) 
 	{
 		Giornaliero v;
@@ -41,13 +41,14 @@ public class Giornaliero extends Dipendente {
 		   
 		   for(Personale personale : p) 
 		      {
-			     if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+			     if(v.getNome().equals(personale.getNome()) )
 			    	 return true;
 		      }
 		}
 		return false;
 	}
 	
+*/
 	
 	public int getIndice(Object o , ArrayList<Personale>p) 
 	{
@@ -59,7 +60,7 @@ public class Giornaliero extends Dipendente {
 			int i=0;
 		    for(Personale personale : p) 
 			   {
-				  if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+				  if(v.getNome().equals(personale.getNome()) )
 				     return i;
 				  i++;
 			   }

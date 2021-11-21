@@ -15,19 +15,17 @@ public class Gestione {
 		Staff s = null;
 		
 		do {
-			
+	
+	// Rivisitazione menu ! 
 			System.out.println("      MENU      ");
 			System.out.println("Che cosa vuoi fare? ");
-			System.out.println("1) Aggiungere un dipendente; ");
-			System.out.println("2) Aggiungere un volontario; ");
-			System.out.println("3) Avere le info di un membro; ");
-			System.out.println("4) Calcolare la paga di un membro; ");
-			System.out.println("5) Creare un gruppo di staff; ");
-			System.out.println("6) Aggiungere un membro ad un gruppo di staff; ");
-			System.out.println("7) Rimuovere un membro da un gruppo di staff; ");
-			System.out.println("8) Trovare un membro di un gruppo di staff; ");
-			System.out.println("9) Elencare i membri di un gruppo di staff; ");
-			System.out.println("10) Uscire dal programma. ");
+			System.out.println("0) Per creare un gruppo/staff: ");
+			System.out.println("1) Aggiungere un dipendente: ");
+			System.out.println("2) Aggiungere un volontario: ");
+			System.out.println("3) Avere le info di un membro: ");
+			System.out.println("4) Calcolare la paga di un membro: ");
+			System.out.println("5) Elencare i membri di un gruppo di staff: ");
+			System.out.println("6) Uscire dal programma. ");
 			
 		    scelta = input.nextInt();
 		    input.nextLine();
@@ -47,7 +45,7 @@ public class Gestione {
 		    	System.out.println("Inserire il codice fiscale: ");
 		    	codiceFiscale=input.nextInt();
 		    	
-		    	System.out.println("Il dipendente Ã¨ giornaliero o un impiegato? ");
+		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
 		    	String Opzione=input.next();
 		    	if(Opzione.equals("giornaliero")) 
 		    	{
@@ -87,14 +85,14 @@ public class Gestione {
 		    	
 		    	break;
 		    	
-		    case 3: //TODO: vedere se effettivamente Ã¨ un membro
+		    case 3: //TODO: vedere se effettivamente è un membro
 		    	
 		    	System.out.println("Di chi vuoi avere le info? ");
 		    	
 		    	
 		    	break;
 		    	
-		    case 4: //TODO: vedere se effettivamente Ã¨ un membro
+		    case 4: //TODO: vedere se effettivamente è un membro
 		    	
 		    	System.out.println("Di chi vuoi sapere la paga? ");
 		    	
@@ -111,9 +109,9 @@ public class Gestione {
 		    	
 		    case 6: //TODO: controllo dell'esistenza del membro
 		    	
-		    	if( s == null) { System.out.println("Non c'Ã¨ nessun gruppo di staff!"); break; }
+		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
 		    	
-		    	System.out.println("Il membro da inserire Ã¨ un volonatario o un dipendente? (v/d) " );
+		    	System.out.println("Il membro da inserire è un volonatario o un dipendente? (v/d) " );
 		    	String VD = input.next();
 		    	if (VD.equals("v")) {
 		    		System.out.println("Inserire in nome del volontario da aggiungere: ");
@@ -126,7 +124,7 @@ public class Gestione {
 			    	
 			    	s.addPersonale(pe);		    			    		
 		    	}
-		    	else { System.out.println("Il dipendente Ã¨ giornaliero o impiegato? (g/i) ");
+		    	else { System.out.println("Il dipendente è giornaliero o impiegato? (g/i) ");
 		    	
 		    	String GI = input.next();
 		    	
@@ -169,19 +167,19 @@ public class Gestione {
 		    	
 		    case 7:
 		    	
-		    	if( s == null) { System.out.println("Non c'Ã¨ nessun gruppo di staff!"); break; }
+		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
 		    	
 		    	break;
 		    	
 		    case 8:
 		    	
-		    	if( s == null) { System.out.println("Non c'Ã¨ nessun gruppo di staff!"); break; }
+		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
 		    	
 		    	break;
 		    	
 		    case 9: //non va
 		    	
-		    	if( s == null) { System.out.println("Non c'Ã¨ nessun gruppo di staff!"); break; }
+		    	if( s == null) { System.out.println("Non c'è nessun gruppo di staff!"); break; }
 		    	   
 		    	   ArrayList<String> lista = s.elencoPersonale();
 		    	   
@@ -209,4 +207,3 @@ public class Gestione {
 	}
 
 }
-

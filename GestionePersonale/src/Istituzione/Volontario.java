@@ -25,7 +25,7 @@ public class Volontario extends Personale{
 		return false; 
 	}
 	
-	
+/*	
 	public boolean contains(Object o , ArrayList<Personale>p) 
 	{
 		Volontario v;
@@ -41,7 +41,7 @@ public class Volontario extends Personale{
 		}
 		return false;
 	}
-	
+*/	
 	
 	public int getIndice(Object o , ArrayList<Personale>p) 
 	{
@@ -53,7 +53,7 @@ public class Volontario extends Personale{
 			int i=0;
 		    for(Personale personale : p) 
 			   {
-				  if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+				  if(v.getNome().equals(personale.getNome()) )
 				     return i;
 				  i++;
 			   }

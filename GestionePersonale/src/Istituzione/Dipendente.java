@@ -32,7 +32,7 @@ public abstract class Dipendente extends Personale{
 	
 	public double getRetribuzioneBase() { return retribuzioneBase; }
 	
-	
+/*	
 	public boolean contains(Object o , ArrayList<Personale>p) 
 	{
 		Dipendente v;
@@ -42,12 +42,14 @@ public abstract class Dipendente extends Personale{
 		   
 		   for(Personale personale : p) 
 		      {
-			     if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+			     if(v.getNome().equals(personale.getNome()) )
 			    	 return true;
 		      }
 		}
 		return false;
 	}
+	
+*/
 	
 	
 	public int getIndice(Object o , ArrayList<Personale>p) 
@@ -60,7 +62,7 @@ public abstract class Dipendente extends Personale{
 			int i=0;
 		    for(Personale personale : p) 
 			   {
-				  if(v.getNome().equals(personale.getNome()) && v.getIndirizzo().equals(personale.getIndirizzo()) && v.getnumeroTelefono()==personale.getnumeroTelefono())
+				  if(v.getNome().equals(personale.getNome()) )
 				     return i;
 				  i++;
 			   }

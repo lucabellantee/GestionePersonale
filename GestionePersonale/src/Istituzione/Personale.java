@@ -31,7 +31,17 @@ public abstract class Personale {
 	
 	public abstract boolean equals(Object o); 
 	
-	public abstract boolean contains(Object o , ArrayList<Personale>p);
+	
+// Ritorna false se l'oggetto non è contenuto nella lista , true se è contenuto nella lista , in base al NOME
+	public  boolean contains(String nomePersona , ArrayList<Personale>p) 
+	{
+
+			for(Personale personale : p) 
+			{
+				if(personale.equals(nomePersona)) return true; 
+			}
+			return false;
+	}
 	
 	public abstract int getIndice(Object o , ArrayList<Personale>p);
 	
