@@ -22,8 +22,8 @@ public class Gestione {
 			System.out.println("0) Per creare un gruppo/staff: ");
 			System.out.println("1) Aggiungere un dipendente: ");
 			System.out.println("2) Aggiungere un volontario: "); 
-			System.out.println("3) Avere le info di un membro: "); // s.elencoPersonale().get(s.getIndice(nomeDaVisualizzare));
-			System.out.println("4) Calcolare la paga di un membro: ");
+			System.out.println("3) Rimuovere un membro dello staff: ");
+			System.out.println("4) Avere tutte le info di un membro: ");
 			System.out.println("5) Elencare i membri di un gruppo di staff: ");
 			System.out.println("6) Uscire dal programma. ");
 			
@@ -42,6 +42,8 @@ public class Gestione {
 		        
 		    case 1:
 		    	
+		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
+		    	
 		    	String nomeDipendente, indirizzoDipendente;
 		    	int numeroDipendente;
 		    	String codiceFiscale;
@@ -57,7 +59,7 @@ public class Gestione {
 		    	System.out.println("Inserire il codice fiscale: ");
 		    	codiceFiscale=input2.nextLine();
 		    	
-		    	System.out.println("Il dipendente � giornaliero o un impiegato? ");
+		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
 		    	String Opzione=input.next();
 		    	if(Opzione.equals("giornaliero")) 
 		    	{
@@ -85,6 +87,8 @@ public class Gestione {
 		    	break;
 		    	
 		    case 2:
+		    	
+		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	  
 		    	String nomeVolontario, indirizzoVolontario;
 		    	int numeroVolontario;
@@ -104,24 +108,42 @@ public class Gestione {
 		    	
 		    case 3:
 		    	
-		    	System.out.println("Di chi vuoi avere le info? ");
+		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
+		    	if (s.isEmpty()) { System.out.println("La lista è vuota!"); break; }
 		    	
+		    	System.out.println("Chi vuoi rimuovere? ");
+		    	String nomeDaRimuovere = input.nextLine();
 		    	
+		    	if(s.removePersonale(nomeDaRimuovere)) //RISOLVERE, DA SEMPRE FALSE
+		    	{ 		    		
+		    	 System.out.println( nomeDaRimuovere + " è stato rimosso dallo staff ");		    		
+		    	}
+		    	else 
+		    	{		    	
+		    	System.out.println( nomeDaRimuovere + " non è presente nello staff"); 		    		
+		    	}
 		    	break;
 		    	
 		    case 4:
 		    	
-		    	System.out.println("Di chi vuoi sapere la paga? ");
+		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
+		    	if (s.isEmpty()) { System.out.println("La lista è vuota!"); break; }
+		    	
+		    	System.out.println("Di chi vuoi avere le info? ");
+		    	String nomeInfo = input.nextLine();
+		    	
+		    	if(s.findPersona(nomeInfo)) //RISOLVERE, DA SEMPRE FALSE
+		    	{
+		    		s.elencoPersonale().get(s.getIndice(nomeInfo));
+		    	} 
+		    	else { System.out.println( nomeInfo + " non è presente nello staff"); }
 		    	
 		    	break;
 
  		    	
-		    case 5: //non va
+		    case 5: 
 		    	
-		    	if( s == null) {	
-		    		System.out.println("Non c'� nessun gruppo/staff!");
-		    		break;	    	   		    	   
-		    	}		    	
+		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}		    	
 		    	else
 		    	{
 		    	//System.out.println("lol");
@@ -131,7 +153,7 @@ public class Gestione {
 		    	   for(String t : lista) System.out.println(t);
 		    	   break;
 		    	   }
-		    	else {System.out.println("La lista � vuota!"); }
+		    	else {System.out.println("La lista è vuota!"); }
 		    	break;
 		    	}
 		    	
