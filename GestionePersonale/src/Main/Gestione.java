@@ -5,13 +5,15 @@ import java.util.*;
 import java.io.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-
+import Eccezzioni.CodiceFiscaleException;
+import Utilità.Check;
 
 public class Gestione {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException , CodiceFiscaleException{
 	
-		int scelta , numeroVolontario = 0 , numeroDipendente = 0;
+		int scelta ;
+		long numeroVolontario = 0 , numeroDipendente = 0 ;
 		boolean uscita=true;
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
@@ -47,7 +49,7 @@ public class Gestione {
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	
 		    	String nomeDipendente, indirizzoDipendente;
-		    	String codiceFiscale;
+		    	String codiceFiscale = null;
 		    	System.out.println("Inserire in nome del dipendente da aggiungere: ");
 		    	nomeDipendente=input.nextLine();
 // TODO LUCA : Eccezione personalizzata , il nome non puo essere composto da interi , tutto il resto si !
@@ -61,7 +63,7 @@ public class Gestione {
 				do {
 		    	 sentinella = true;
 		    	try {
-		    	      numeroDipendente = input.nextInt();
+		    	      numeroDipendente = input.nextLong();
 		    	    }
 		    	catch(InputMismatchException e) 
 		    	    {
@@ -73,8 +75,25 @@ public class Gestione {
 				
 				
 		    	System.out.println("Inserire il codice fiscale: ");
-		    	codiceFiscale=input2.nextLine();
-		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
+		     	
+		       Check c = new Check();		       
+		       boolean condizione;
+		       do{
+			      condizione = true;
+		       try {	
+		    	    codiceFiscale=input2.next();
+		    	   if(!c.checkLettersCodiceFiscale(codiceFiscale) || !c.checkNumberCodiceFiscale(codiceFiscale))
+		    	      throw new CodiceFiscaleException();
+		           }
+		       catch(CodiceFiscaleException cfe) 
+		           {
+		    	     condizione = false;
+		    	     System.out.println(cfe);
+		    	     System.out.println("Digita di nuovo il codice ma stai più attento !");
+		           }
+		     }while(!condizione);
+		   
+		       System.out.println("Il dipendente è giornaliero o un impiegato? ");
 		    	String Opzione = input.next();
 	
 		    	if(Opzione.equals("giornaliero")) 
@@ -121,7 +140,7 @@ public class Gestione {
 				do {
 		    	 sentinellaa = true;
 		    	try {
-		    	      numeroVolontario=input.nextInt();
+		    	      numeroVolontario=input.nextLong();
 		    	    }
 		    	catch(InputMismatchException e) 
 		    	    {

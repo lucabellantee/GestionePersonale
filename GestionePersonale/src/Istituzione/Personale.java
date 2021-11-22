@@ -7,9 +7,9 @@ public abstract class Personale {
 	
 	private String nome;
 	private String indirizzo;
-	private int numeroTelefono;
+	private long numeroTelefono;
 	
-	public Personale(String nome, String indirizzo, int numeroTelefono) 
+	public Personale(String nome, String indirizzo, long numeroTelefono) 
 	{
 		this.nome = nome;
 		this.indirizzo = indirizzo;
@@ -19,7 +19,7 @@ public abstract class Personale {
 	
 	public String getNome() { return this.nome; }
 	public String getIndirizzo() { return this.indirizzo; }
-	public int getnumeroTelefono() { return this.numeroTelefono; }
+	public long getnumeroTelefono() { return this.numeroTelefono; }
 	
 	
 	public String toString() 

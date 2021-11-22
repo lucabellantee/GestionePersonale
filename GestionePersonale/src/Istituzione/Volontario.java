@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Volontario extends Personale{
 	
-	public Volontario(String nome, String indirizzo, int numeroTelefono) 
+	public Volontario(String nome, String indirizzo, long numeroTelefono) 
 	{
 		super(nome,indirizzo,numeroTelefono);
 	}
