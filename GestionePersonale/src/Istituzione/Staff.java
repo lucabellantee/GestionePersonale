@@ -92,7 +92,8 @@ public class Staff {
 		   return false; 
 	}
 	
-
+//  Ritorna le info di quella singola persona tipo toString ma con qualche info in più tipo le ore lavorative o
+//  i bonus maturati 
 	public String infoPersona(String nome) 
 	{
 	  if(this.findPersona(nome)) 
@@ -102,8 +103,5 @@ public class Staff {
 	  return "null";
 	}
 	
-	
-	// TODO LUCA : Si potrebbe in seguito, pensare di aggiungere un metodo per la promozione di Giornalieri ad impiegati
-	//      TODO :  oppure da Volontari a Dipendenti o Giornalieri ! 
 
 }

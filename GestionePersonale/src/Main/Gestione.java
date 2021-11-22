@@ -3,8 +3,9 @@ package Main;
 import Istituzione.*;
 import java.util.*;
 import java.io.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
-// TODO luca : Studiare / rivedere bene il costrutto della generazione di classi di Errore personalizzate
 
 public class Gestione {
 
@@ -36,7 +37,7 @@ public class Gestione {
             case 0:
 		    	
 		    	System.out.println("Inserire il nome del gruppo staff: ");
-		    	String nomeStaff=input.next();
+		    	String nomeStaff=input.nextLine();
 		    	s= new Staff(nomeStaff);
 		    	
 		    	break;
@@ -50,7 +51,7 @@ public class Gestione {
 		    	String codiceFiscale;
 		    	System.out.println("Inserire in nome del dipendente da aggiungere: ");
 		    	nomeDipendente=input.nextLine();
-		    	
+// TODO LUCA : Eccezione personalizzata , il nome non puo essere composto da interi , tutto il resto si !
 		    	if(s.findPersona(nomeDipendente)) break;
 		    	
 		    	System.out.println("Inserire l'indirizzo: ");
@@ -196,9 +197,16 @@ public class Gestione {
 		  		  if(s == null) { uscita = false; break;  } 
 		  		  
 		  	    	if(!s.isEmpty()) {
+		  	    	       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+		  	    	       LocalDate localDate = LocalDate.now();
+		  	    	       file_output.println("                      " + dtf.format(localDate));
 		  		    	   ArrayList<String> lista = new ArrayList();
-		  		    	   lista = s.elencoPersonale();		    	   
+		  		    	   lista = s.elencoPersonale();	
+		  		    	   System.out.println();
 		  		    	   for(String t : lista) file_output.println(t);
+		  		    	   file_output.println(" ");
+		  		    	   file_output.println(" ");
+		  		    	   file_output.println(" ");
 		  		    	   file_output.close();
 		  		    	   }
 		  	    	else System.out.println("La lista è vuota o non è stata generata ! ");
