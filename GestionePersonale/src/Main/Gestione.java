@@ -2,17 +2,14 @@ package Main;
 
 import Istituzione.*;
 import java.util.*;
+import java.io.*;
 
-//BISOGNA FAR IN MODO CHE QUANDO SI STAMPANO LE INFO DI UN
-//MEMBRO SINGOLO, ESCA LA PAGA = A 0 PER I VOLOTARI E PER
-// I DIPENDENTI, OLTRE ALLA PAGA, SE UNO è GIORNALIERO
-// I GIORNI LAVORATIVI E SE UNO è IMPIEGATO I BONUS
-// PER DIFFERENZIARE COSI LA STAMPA PUNTO 5 (PIU SCARNA) RISPETTO QUELLA DEL PUNTO 4
+// TODO luca : Studiare / rivedere bene il costrutto della generazione di classi di Errore personalizzate
 
 public class Gestione {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws IOException {
+	
 		int scelta;
 		boolean uscita=true;
 		Scanner input = new Scanner(System.in);
@@ -29,7 +26,7 @@ public class Gestione {
 			System.out.println("3) Rimuovere un membro dello staff: ");
 			System.out.println("4) Avere tutte le info di un membro: ");
 			System.out.println("5) Elencare i membri di un gruppo di staff: ");
-			System.out.println("6) Uscire dal programma. ");
+			System.out.println("6) Uscire dal programma e salvare su file ");
 			
 		    scelta = input.nextInt();
 		    input.nextLine();
@@ -49,7 +46,7 @@ public class Gestione {
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	
 		    	String nomeDipendente, indirizzoDipendente;
-		    	int numeroDipendente;
+		    	int numeroDipendente = 0;
 		    	String codiceFiscale;
 		    	System.out.println("Inserire in nome del dipendente da aggiungere: ");
 		    	nomeDipendente=input.nextLine();
@@ -59,12 +56,27 @@ public class Gestione {
 		    	System.out.println("Inserire l'indirizzo: ");
 		    	indirizzoDipendente=input.nextLine();
 		    	System.out.println("Inserire il numero di telefono: ");
-		    	numeroDipendente=input.nextInt();
+		    	
+				boolean sentinella;
+				do {
+		    	 sentinella = true;
+		    	try {
+		    	      numeroDipendente=input.nextInt();
+		    	    }
+		    	catch(InputMismatchException e) 
+		    	    {
+		    		   input.nextLine();
+		    		   System.out.println("Inserire un numero di telefono valido");
+		    		   sentinella = false; 
+		    	    }
+		      }while(!sentinella);
+				
+				
 		    	System.out.println("Inserire il codice fiscale: ");
 		    	codiceFiscale=input2.nextLine();
-		    	
 		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
-		    	String Opzione=input.next();
+		    	String Opzione = input.next();
+		    	
 		    	if(Opzione.equals("giornaliero")) 
 		    	{
 		    	 
@@ -76,7 +88,7 @@ public class Gestione {
 		    	 s.addPersonale(p);
 		    	 
 		    	}
-		    	else
+		    	else if(Opzione.equals("impiegato"))
 		    	{
 		    		
 		    	 int bonusMaturati;
@@ -86,7 +98,8 @@ public class Gestione {
 		    	 p= new Impiegato(nomeDipendente, indirizzoDipendente, numeroDipendente, codiceFiscale, bonusMaturati);
 		    	 s.addPersonale(p);	
 		    	}
-		    		    	
+		        
+		    	else System.out.println("Tipologia di personale non riconosciuta");
 		    	
 		    	break;
 		    	
@@ -95,7 +108,7 @@ public class Gestione {
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	  
 		    	String nomeVolontario, indirizzoVolontario;
-		    	int numeroVolontario;
+		    	int numeroVolontario=0;
 		    	System.out.println("Inserire in nome del volontario da aggiungere: ");
 		    	nomeVolontario=input.nextLine();
 		    	
@@ -104,7 +117,20 @@ public class Gestione {
 		    	System.out.println("Inserire l'indirizzo: ");
 		    	indirizzoVolontario=input.nextLine();
 		    	System.out.println("Inserire il numero di telefono: ");
-		    	numeroVolontario=input.nextInt();		    	
+				boolean sentinellaa;
+				do {
+		    	 sentinellaa = true;
+		    	try {
+		    	      numeroDipendente=input.nextInt();
+		    	    }
+		    	catch(InputMismatchException e) 
+		    	    {
+		    		   input.nextLine();
+		    		   System.out.println("Inserire un numero di telefono valido");
+		    		   sentinella = false; 
+		    	    }
+		      }while(!sentinellaa);
+				
 		    	p = new Volontario (nomeVolontario,indirizzoVolontario,numeroVolontario);
 		    	s.addPersonale(p);
 		    	
@@ -164,8 +190,26 @@ public class Gestione {
 		    	}
 		    	
 		    case 6:
-		    	uscita=false;
-		    	break;
+		    	try {
+		  		  PrintWriter file_output = new PrintWriter ( new BufferedWriter (new FileWriter ("log.txt",true)));
+		  		  
+		  		  if(s == null) { uscita = false; break;  } 
+		  		  
+		  	    	if(!s.isEmpty()) {
+		  		    	   ArrayList<String> lista = new ArrayList();
+		  		    	   lista = s.elencoPersonale();		    	   
+		  		    	   for(String t : lista) file_output.println(t);
+		  		    	   file_output.close();
+		  		    	   }
+		  	    	else System.out.println("La lista è vuota o non è stata generata ! ");
+		  	    }
+		  	
+		  	catch(IOException e) 
+		  	   {
+		  		  System.out.println("ERRORE NEL LOG DEL SISTEMA");
+		  	   }
+		    	   uscita=false;
+		    	   break;
 		    	
 		    default:
 		        System.out.println("Usare solo un carattere consentito!");
@@ -178,8 +222,9 @@ public class Gestione {
 		    System.out.println("");
 		    
 		}while(uscita);
-		
-
+			
+	
+	
 	}
 
 }
