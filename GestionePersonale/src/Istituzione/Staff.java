@@ -59,7 +59,7 @@ public class Staff {
 	}
 	
 	
-//  Ritorna true se	
+//  Ritorna true se	la persona è presente nella lista altrimenti ritorna false 
 	public boolean findPersona(String daCercare) 
 	{
 		Personale personale = new Volontario(daCercare,"a",0);
@@ -90,6 +90,16 @@ public class Staff {
 	{
 		if(this.p.isEmpty()) return true;
 		   return false; 
+	}
+	
+
+	public String infoPersona(String nome) 
+	{
+	  if(this.findPersona(nome)) 
+	  {
+		  return p.get(this.getIndice(nome)).infoPersona();
+	  }	
+	  return "null";
 	}
 	
 	

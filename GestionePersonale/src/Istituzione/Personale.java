@@ -27,12 +27,15 @@ public abstract class Personale {
 		return "NOME: " + this.nome + " INDIRIZZO: " + this.indirizzo + " NUMERO DI TELEFONO: " + this.numeroTelefono;
 	}
 	
+	
+	public abstract String infoPersona();
+	
 	public abstract double getPaga();
 	
 	public abstract boolean equals(Object o); 
 	
 	
-// Ritorna false se l'oggetto non Ã¨ contenuto nella lista , true se Ã¨ contenuto nella lista , in base al NOME
+// Ritorna false se l'oggetto non è contenuto nella lista , true se è contenuto nella lista , in base al NOME
 	public  boolean contains(String nomePersona , ArrayList<Personale>p) 
 	{
 

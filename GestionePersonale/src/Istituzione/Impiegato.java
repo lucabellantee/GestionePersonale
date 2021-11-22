@@ -70,5 +70,11 @@ public class Impiegato extends Dipendente {
 		}
 		return -1; 
 	}
+	
+	
+	public String infoPersona() 
+	{
+		return "IMPIEGATO ->  " + "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA BASE: " + this.getPaga() + " BONUS MATURATI: " + this.getBonusMaturati();	
+	}
 
 }

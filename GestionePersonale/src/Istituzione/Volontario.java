@@ -62,5 +62,11 @@ public class Volontario extends Personale{
 		}
 		return -1; 
 	}
+	
+	
+	public String infoPersona() 
+	{
+		return "VOLONTARIO --> "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono();
+	}
 
 }

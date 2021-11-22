@@ -5,8 +5,8 @@ import java.util.*;
 
 //BISOGNA FAR IN MODO CHE QUANDO SI STAMPANO LE INFO DI UN
 //MEMBRO SINGOLO, ESCA LA PAGA = A 0 PER I VOLOTARI E PER
-// I DIPENDENTI, OLTRE ALLA PAGA, SE UNO Ã¨ GIORNALIERO
-// I GIORNI LAVORATIVI E SE UNO Ã¨ IMPIEGATO I BONUS
+// I DIPENDENTI, OLTRE ALLA PAGA, SE UNO è GIORNALIERO
+// I GIORNI LAVORATIVI E SE UNO è IMPIEGATO I BONUS
 // PER DIFFERENZIARE COSI LA STAMPA PUNTO 5 (PIU SCARNA) RISPETTO QUELLA DEL PUNTO 4
 
 public class Gestione {
@@ -63,7 +63,7 @@ public class Gestione {
 		    	System.out.println("Inserire il codice fiscale: ");
 		    	codiceFiscale=input2.nextLine();
 		    	
-		    	System.out.println("Il dipendente Ã¨ giornaliero o un impiegato? ");
+		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
 		    	String Opzione=input.next();
 		    	if(Opzione.equals("giornaliero")) 
 		    	{
@@ -113,36 +113,36 @@ public class Gestione {
 		    case 3:
 		    	
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
-		    	if (s.isEmpty()) { System.out.println("La lista Ã¨ vuota!"); break; }
+		    	if (s.isEmpty()) { System.out.println("La lista è vuota!"); break; }
 		    	
 		    	System.out.println("Chi vuoi rimuovere? ");
 		    	String nomeDaRimuovere = input.nextLine();
 		    	
 		    	if(s.removePersonale(nomeDaRimuovere)) 
 		    	{ 		    		
-		    	 System.out.println( nomeDaRimuovere + " Ã¨ stato rimosso dallo staff ");		    		
+		    	 System.out.println( nomeDaRimuovere + " è stato rimosso dallo staff ");		    		
 		    	}
 		    	else 
 		    	{		    	
-		    	System.out.println( nomeDaRimuovere + " non Ã¨ presente nello staff"); 		    		
+		    	System.out.println( nomeDaRimuovere + " non è presente nello staff"); 		    		
 		    	}
 		    	break;
 		    	
 		    case 4:
 		    	
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
-		    	if (s.isEmpty()) { System.out.println("La lista Ã¨ vuota!"); break; }
+		    	if (s.isEmpty()) { System.out.println("La lista è vuota!"); break; }
 		    	
 		    	System.out.println("Di chi vuoi avere le info? ");
 		    	String nomeInfo = input.nextLine();
 		    	
 		    	if(s.findPersona(nomeInfo))
 		    	{
-		    		System.out.println(s.elencoPersonale().get(s.getIndice(nomeInfo)).toString());
+		    		System.out.println(s.infoPersona(nomeInfo));
 		    				    	  
 		    		
 		    	} 
-		    	else { System.out.println( nomeInfo + " non Ã¨ presente nello staff"); }
+		    	else { System.out.println( nomeInfo + " non è presente nello staff"); }
 		    	
 		    	break;
 
@@ -159,7 +159,7 @@ public class Gestione {
 		    	   for(String t : lista) System.out.println(t);
 		    	   break;
 		    	   }
-		    	else {System.out.println("La lista Ã¨ vuota!"); }
+		    	else {System.out.println("La lista è vuota!"); }
 		    	break;
 		    	}
 		    	
