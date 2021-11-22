@@ -1,6 +1,8 @@
 package Istituzione;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 
 /*
@@ -54,6 +56,9 @@ public class Staff {
 		  {
 			  daStampare.add(personal.toString()); 
 		  }
+		
+//  Ordina per ordine crescente di nome oggetti della stessa tipologia 		
+		Collections.sort(daStampare);
 		
 		return daStampare; 
 	}

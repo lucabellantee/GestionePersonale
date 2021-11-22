@@ -11,7 +11,7 @@ public class Gestione {
 
 	public static void main(String[] args) throws IOException {
 	
-		int scelta;
+		int scelta , numeroVolontario = 0 , numeroDipendente = 0;
 		boolean uscita=true;
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
@@ -47,7 +47,6 @@ public class Gestione {
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	
 		    	String nomeDipendente, indirizzoDipendente;
-		    	int numeroDipendente = 0;
 		    	String codiceFiscale;
 		    	System.out.println("Inserire in nome del dipendente da aggiungere: ");
 		    	nomeDipendente=input.nextLine();
@@ -62,7 +61,7 @@ public class Gestione {
 				do {
 		    	 sentinella = true;
 		    	try {
-		    	      numeroDipendente=input.nextInt();
+		    	      numeroDipendente = input.nextInt();
 		    	    }
 		    	catch(InputMismatchException e) 
 		    	    {
@@ -77,7 +76,7 @@ public class Gestione {
 		    	codiceFiscale=input2.nextLine();
 		    	System.out.println("Il dipendente è giornaliero o un impiegato? ");
 		    	String Opzione = input.next();
-		    	
+	
 		    	if(Opzione.equals("giornaliero")) 
 		    	{
 		    	 
@@ -109,7 +108,7 @@ public class Gestione {
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	  
 		    	String nomeVolontario, indirizzoVolontario;
-		    	int numeroVolontario=0;
+		   
 		    	System.out.println("Inserire in nome del volontario da aggiungere: ");
 		    	nomeVolontario=input.nextLine();
 		    	
@@ -122,13 +121,13 @@ public class Gestione {
 				do {
 		    	 sentinellaa = true;
 		    	try {
-		    	      numeroDipendente=input.nextInt();
+		    	      numeroVolontario=input.nextInt();
 		    	    }
 		    	catch(InputMismatchException e) 
 		    	    {
 		    		   input.nextLine();
 		    		   System.out.println("Inserire un numero di telefono valido");
-		    		   sentinella = false; 
+		    		   sentinellaa = false; 
 		    	    }
 		      }while(!sentinellaa);
 				
