@@ -1,3 +1,9 @@
+/*
+   Questa classe serve a gestire gli errori derivanti dal codice fiscale 
+ */
+
+
+
 package Eccezzioni;
 
 public class CodiceFiscaleException extends Exception{

@@ -6,19 +6,27 @@ import java.io.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import Eccezzioni.CodiceFiscaleException;
-import Utilità.Check;
+import Utilità.*;
+import Utilità.File;
+
 
 public class Gestione {
 
 	public static void main(String[] args) throws IOException , CodiceFiscaleException{
 	
-		int scelta ;
+		int scelta = -1;
 		long numeroVolontario = 0 , numeroDipendente = 0 ;
-		boolean uscita=true;
+		boolean uscita=true , booLog;
+		
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
+		
 		Staff s = null;
 		Personale p= null;
+		
+		File fileLog = new File("log.txt");
+		
+		
 		do {
 	
 			System.out.println("      MENU      ");
@@ -30,15 +38,35 @@ public class Gestione {
 			System.out.println("4) Avere tutte le info di un membro: ");
 			System.out.println("5) Elencare i membri di un gruppo di staff: ");
 			System.out.println("6) Uscire dal programma e salvare su file ");
-			
-		    scelta = input.nextInt();
-		    input.nextLine();
 
+		  
+		  boolean controllo;
+		  do {   
+			  controllo = true;
+		      try {
+		    	  scelta = input.nextInt();;
+		          }
+		     catch(InputMismatchException ie) 
+		          {
+		    	    input.nextLine();
+			        System.out.println("Non puoi inserire caratteri !");
+			        controllo = false;
+		          }
+		     }while(!controllo);
+		   
+		    if(s == null) booLog = false;
+		       else booLog = true;
+		    
 		    switch(scelta) {
 		    
             case 0:
+		    if(booLog)	
+            	if(fileLog.ScriviSuFile(s)) System.out.println("Salvataggio , effettuato, pronto per un nuovo staff !");
+		    	  else System.out.println(" ERRORE ! Qualcosa è andato storto durante il salvataggio !"); 
 		    	
-		    	System.out.println("Inserire il nome del gruppo staff: ");
+		        input.nextLine();
+		        
+		        System.out.println("Inserire il nome del gruppo staff: ");
 		    	String nomeStaff=input.nextLine();
 		    	s= new Staff(nomeStaff);
 		    	
@@ -52,7 +80,6 @@ public class Gestione {
 		    	String codiceFiscale = null;
 		    	System.out.println("Inserire in nome del dipendente da aggiungere: ");
 		    	nomeDipendente=input.nextLine();
-// TODO LUCA : Eccezione personalizzata , il nome non puo essere composto da interi , tutto il resto si !
 		    	if(s.findPersona(nomeDipendente)) break;
 		    	
 		    	System.out.println("Inserire l'indirizzo: ");
@@ -127,7 +154,8 @@ public class Gestione {
 		    	if (s==null) { System.out.println("Prima devi creare un gruppo/staff! "); break;}
 		    	  
 		    	String nomeVolontario, indirizzoVolontario;
-		   
+		        
+		    	input.nextLine();
 		    	System.out.println("Inserire in nome del volontario da aggiungere: ");
 		    	nomeVolontario=input.nextLine();
 		    	
@@ -209,31 +237,8 @@ public class Gestione {
 		    	}
 		    	
 		    case 6:
-		    	try {
-		  		  PrintWriter file_output = new PrintWriter ( new BufferedWriter (new FileWriter ("log.txt",true)));
-		  		  
-		  		  if(s == null) { uscita = false; break;  } 
-		  		  
-		  	    	if(!s.isEmpty()) {
-		  	    	       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
-		  	    	       LocalDate localDate = LocalDate.now();
-		  	    	       file_output.println("                      " + dtf.format(localDate));
-		  		    	   ArrayList<String> lista = new ArrayList();
-		  		    	   lista = s.elencoPersonale();	
-		  		    	   System.out.println();
-		  		    	   for(String t : lista) file_output.println(t);
-		  		    	   file_output.println(" ");
-		  		    	   file_output.println(" ");
-		  		    	   file_output.println(" ");
-		  		    	   file_output.close();
-		  		    	   }
-		  	    	else System.out.println("La lista è vuota o non è stata generata ! ");
-		  	    }
-		  	
-		  	catch(IOException e) 
-		  	   {
-		  		  System.out.println("ERRORE NEL LOG DEL SISTEMA");
-		  	   }
+		    	   if(fileLog.ScriviSuFile(s)) System.out.println("Salvataggio avvenuto con successo !");
+		    	     else System.out.println(" ERRORE ! Qualcosa è andato storto durante il salvataggio !");
 		    	   uscita=false;
 		    	   break;
 		    	

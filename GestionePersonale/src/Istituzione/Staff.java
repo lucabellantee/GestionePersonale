@@ -25,6 +25,9 @@ public class Staff {
 		this.nomeStaff = nomeStaff; 
 	}
 	
+	
+	public String getNome() { return this.nomeStaff; }
+	
 
 //  Aggiunge, se non presente, nuovo personale  e ritorna true. Ritorna false in ogni altro caso	
 	public boolean addPersonale(Personale personale) 

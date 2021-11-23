@@ -1,3 +1,9 @@
+/*
+   Questa classe possiede dei metetodi che eseguono dei controlli sulla composizione del codice fiscale
+ */
+
+
+
 package Utilità;
 import Main.Gestione;
 

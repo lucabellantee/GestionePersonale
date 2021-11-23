@@ -18,7 +18,7 @@ public class Giornaliero extends Dipendente {
 	
 	public String toString() 
 	{
-	  return "GIORNALIERO ->  "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA: " + this.getPaga();
+	  return "GIORNALIERO ->  "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA: " + this.getPaga() + "€";
 	}
 	
 	

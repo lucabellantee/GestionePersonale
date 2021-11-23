@@ -19,7 +19,7 @@ public abstract class Dipendente extends Personale{
 	
 	public String toString() 
 	{
-		return "DIPENDENTE ->  "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA BASE: " + this.getPaga();
+		return "DIPENDENTE ->  "+ "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA BASE: " + this.getPaga() + "€";
 	}
 	
 	

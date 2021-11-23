@@ -18,7 +18,7 @@ public class Impiegato extends Dipendente {
 	
 	public String toString() 
 	{
-		return "IMPIEGATO ->  " + "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA BASE: " + this.getPaga();
+		return "IMPIEGATO ->  " + "NOME: " + this.getNome() + " INDIRIZZO: " + this.getIndirizzo() + " NUMERO DI TELEFONO: " + this.getnumeroTelefono() + " PAGA: " + this.getPaga() + "€";
 	}
 	
 	
